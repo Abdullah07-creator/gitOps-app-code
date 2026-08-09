@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitOps Multi-Service Portal</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f7f6; margin: 40px; }
+        .card { background: white; padding: 25px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); max-width: 500px; }
+        .status { padding: 10px; border-radius: 4px; font-weight: bold; margin-top: 15px; }
+        .online { background-color: #d4edda; color: #155724; }
+        .offline { background-color: #f8d7da; color: #721c24; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2>🚀 GitOps Microservice Portal</h2>
+        <p><strong>Frontend Status:</strong> Active (Served by Nginx)</p>
+        <hr>
+        <h3>Backend Service Communication</h3>
+        <button onclick="fetchBackendInfo()">Check Backend API</button>
+        <div id="backend-result" class="status offline">Awaiting API Call...</div>
+    </div>
+
+    <script>
+        async function fetchBackendInfo() {
+            const resultDiv = document.getElementById('backend-result');
+            try {
+                // Connects to Backend API on port 5000
+                const response = await fetch('http://localhost:5000/api/info');
+                const data = await response.json();
+                resultDiv.className = 'status online';
+                resultDiv.innerHTML = `Message: ${data.message} <br> Version: ${data.version}`;
+            } catch (error) {
+                resultDiv.className = 'status offline';
+                resultDiv.innerHTML = 'Failed to connect to Backend API!';
+            }
+        }
+    </script>
+</body>
+</html>
