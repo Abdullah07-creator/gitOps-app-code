@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-deployment
+  labels:
+    app: backend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+      - name: backend
+        image: backend-api:v1
+        imagePullPolicy: Never  # Uses local image built inside Minikube
+        ports:
+        - containerPort: 5000
+        env:
+        - name: APP_VERSION
+          value: "v1.0.0-k8s"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend-service
+spec:
+  type: ClusterIP  # Internal cluster IP only
+  selector:
+    app: backend
+  ports:
+  - port: 5000
+    targetPort: 5000
