@@ -33,3 +33,4 @@ Build a lightweight multi-service web application (Frontend + Backend) and deplo
 ## 📁 Repository Structure
 - `gitops-app-code`: Source code, Dockerfiles, and GitHub Actions workflows.
 - `gitops-manifests`: Helm charts and Argo CD application manifests.
+# Full GitOps Pipeline Verified

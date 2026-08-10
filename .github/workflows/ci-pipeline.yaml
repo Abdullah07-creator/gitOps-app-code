@@ -110,3 +110,23 @@ jobs:
           push: true
           tags: ${{ steps.meta-frontend.outputs.tags }}
           labels: ${{ steps.meta-frontend.outputs.labels }}
+      
+      # --- AUTOMATED GITOPS MANIFEST UPDATE ---
+      - name: Checkout Manifests Repository
+        uses: actions/checkout@v4
+        with:
+          repository: 'Abdullah07-creator/gitops-manifests'
+          token: ${{ secrets.PAT_TOKEN }}
+          path: 'gitops-manifests'
+
+      - name: Update Image Tag in Helm values.yaml
+        run: |
+          cd gitops-manifests/helm/web-app
+          # Update the tag value with the new GitHub SHA
+          sed -i 's/tag: .*/tag: "${{ github.sha }}"/' values.yaml
+          
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add values.yaml
+          git commit -m "ci: update backend & frontend image tags to ${{ github.sha }}" || exit 0
+          git push origin main
