@@ -1,9 +1,7 @@
 # 🚀 End-to-End GitOps Continuous Delivery Pipeline
 
 ## 🎯 Project Objective
-Build a lightweight multi-service web application (Frontend + Backend) and deploy it to Kubernetes using a modern **GitOps Continuous Delivery** pipeline powered by Argo CD, Helm, GitHub Actions, and Trivy.
-
----
+"I built a complete, production-grade GitOps Delivery Pipeline for a microservices application using GitHub Actions, Helm, Argo CD, and Kubernetes (Minikube). Every application code change triggers an automated CI pipeline that builds and scans container images, updates configuration manifests in Git, and lets Argo CD automatically synchronize the changes to the cluster while continuously enforcing drift detection and self-healing."
 
 ## 🏗️ Architecture & Workflow Overview
 1. **Developer**: Pushes code to the `gitops-app-code` GitHub repository.
