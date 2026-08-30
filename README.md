@@ -1,9 +1,9 @@
-# 🚀 End-to-End GitOps Continuous Delivery Pipeline
+#  End-to-End GitOps Continuous Delivery Pipeline
 
-## 🎯 Project Objective
+##  Project Objective
 "I built a complete, production-grade GitOps Delivery Pipeline for a microservices application using GitHub Actions, Helm, Argo CD, and Kubernetes (Minikube). Every application code change triggers an automated CI pipeline that builds and scans container images, updates configuration manifests in Git, and lets Argo CD automatically synchronize the changes to the cluster while continuously enforcing drift detection and self-healing."
 
-## 🏗️ Architecture & Workflow Overview
+##  Architecture & Workflow Overview
 1. **Developer**: Pushes code to the `gitops-app-code` GitHub repository.
 2. **GitHub Actions (CI)**: 
    - Builds Docker images for Frontend and Backend services.
@@ -18,7 +18,7 @@
 
 ---
 
-## 🛠️ Tech Stack
+##  Tech Stack
 - **Application**: HTML/Nginx (Frontend), Python/Flask (Backend)
 - **Containerization**: Docker
 - **Container Registry**: GitHub Container Registry (GHCR)
@@ -28,7 +28,6 @@
 
 ---
 
-## 📁 Repository Structure
+##  Repository Structure
 - `gitops-app-code`: Source code, Dockerfiles, and GitHub Actions workflows.
 - `gitops-manifests`: Helm charts and Argo CD application manifests.
-# Full GitOps Pipeline Verified
